@@ -4,7 +4,9 @@
 
 Report security bugs in Moov's open-source code to `security@moov.io`.
 
+<!-- markdown-link-check-disable -->
 Report security bugs in Moov Financial's code or products via [HackerOne](https://hackerone.com/moov).
+<!-- markdown-link-check-enable -->
 
 After submitting a report an acknowledged will be received within 5 days and
 you can expect a more detailed response after the investigation occurs. Moov
