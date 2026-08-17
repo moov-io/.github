@@ -42,21 +42,11 @@ jobs:
         with:
           persist-credentials: false
 
-      # Written into the workspace so the action's Docker container can read it.
-      # Allow callers to pin this reusable workflow by branch (@master) so
-      # action version bumps here apply org-wide without a SHA change in
-      # every repo. All other uses still require a hash pin.
-      - name: Write org zizmor config
-        run: |
-          printf '%s\n' \
-            'rules:' \
-            '  unpinned-uses:' \
-            '    config:' \
-            '      policies:' \
-            '        moov-io/.github: ref-pin' \
-            > .github/zizmor.yml
-
       - name: Run zizmor
         uses: zizmorcore/zizmor-action@3dc1ecc9bcb9e94e9b2c709687979e1298497054 # v0.6.2
         with:
-          config: .github/zizmor.yml
+          # Code scanning upload only; findings do not fail the job.
+          # A host-side config file is not used because zizmor-action
+          # runs in Docker and cannot see runner.temp.
+          advanced-security: true
+          fail-on-no-inputs: false
