@@ -25,7 +25,7 @@ jobs:
       security-events: write
       contents: read
       actions: read
-    uses: moov-io/.github/.github/workflows/zizmor.yml@master
+    uses: moov-io/.github/.github/workflows/zizmor.yml@768836368a4ebdf0959c6497d41433e7193103cc
 ```
 
 A [workflow template](.github/workflow-templates) is also available from the Actions tab when creating a new workflow.
