@@ -43,10 +43,10 @@ jobs:
           persist-credentials: false
 
       - name: Run zizmor
+        continue-on-error: true
         uses: zizmorcore/zizmor-action@3dc1ecc9bcb9e94e9b2c709687979e1298497054 # v0.6.2
         with:
-          # Code scanning upload only; findings do not fail the job.
-          # A host-side config file is not used because zizmor-action
-          # runs in Docker and cannot see runner.temp.
+          # Findings go to code scanning and do not fail zizmor itself.
+          # continue-on-error covers GitHub code-scanning upload 503s.
           advanced-security: true
           fail-on-no-inputs: false
