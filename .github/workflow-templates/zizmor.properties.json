@@ -1,0 +1,6 @@
+{
+  "name": "zizmor GitHub Actions security analysis",
+  "description": "Run zizmor on every push and pull request. Findings are uploaded to code scanning.",
+  "iconName": "octicon shield-lock",
+  "categories": ["Automation", "Code Scanning"]
+}

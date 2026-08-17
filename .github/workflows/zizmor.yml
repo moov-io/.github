@@ -1,0 +1,61 @@
+# Shared reusable workflow for GitHub Actions security analysis.
+#
+# Other moov-io repos should call this rather than vendoring zizmor-action:
+#
+#   name: zizmor
+#   on:
+#     push:
+#     pull_request:
+#   permissions: {}
+#   jobs:
+#     zizmor:
+#       permissions:
+#         security-events: write
+#         contents: read
+#         actions: read
+#       uses: moov-io/.github/.github/workflows/zizmor.yml@master
+#
+# Findings are uploaded to GitHub code scanning and do not fail the job.
+# Use https://app.stepsecurity.io/ to improve workflow security
+name: zizmor
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_call:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  zizmor:
+    name: zizmor
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      contents: read
+      actions: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # Allow callers to pin this reusable workflow by branch (@master) so
+      # action version bumps here apply org-wide without a SHA change in
+      # every repo. All other uses still require a hash pin.
+      - name: Write org zizmor config
+        run: |
+          printf '%s\n' \
+            'rules:' \
+            '  unpinned-uses:' \
+            '    config:' \
+            '      policies:' \
+            '        moov-io/.github: ref-pin' \
+            > "${RUNNER_TEMP}/zizmor.yml"
+
+      - name: Run zizmor
+        uses: zizmorcore/zizmor-action@3dc1ecc9bcb9e94e9b2c709687979e1298497054 # v0.6.2
+        with:
+          config: ${{ runner.temp }}/zizmor.yml

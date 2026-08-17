@@ -1,0 +1,7 @@
+# Shared zizmor configuration for moov-io repositories.
+# Callers may reference moov-io/.github reusable workflows by branch.
+rules:
+  unpinned-uses:
+    config:
+      policies:
+        moov-io/.github: ref-pin
