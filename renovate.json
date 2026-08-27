@@ -30,6 +30,18 @@
       ],
       "automerge": true,
       "platformAutomerge": true
+    },
+    {
+      "description": "Keep docker/image majors out of grouped update-all PRs and do not automerge them",
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "groupName": "docker major",
+      "automerge": false
     }
-  ]
+  ],
+  "platformAutomerge": true
 }
