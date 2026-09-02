@@ -11,7 +11,10 @@ go.sum
 **/go.mod
 **/go.sum
 
-# GitHub Actions workflows have no owners so action-only PRs skip code-owner review.
+# GitHub Actions workflows and templates have no owners so action-only PRs skip code-owner review.
 .github/workflows/**
 .github/workflows/*
 **/.github/workflows/*
+.github/workflow-templates/**
+.github/workflow-templates/*
+**/.github/workflow-templates/*

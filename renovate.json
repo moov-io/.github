@@ -3,6 +3,10 @@
   "extends": [
     "config:recommended"
   ],
+  "automergeType": "pr",
+  "ignoreReviewers": [
+    "adamdecaf"
+  ],
   "github-actions": {
     "fileMatch": [
       "(^|/)\\.github/workflows/[^/]+\\.(ya?ml)$",
