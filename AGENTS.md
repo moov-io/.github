@@ -62,18 +62,25 @@ These libraries read and write money-movement files. Silent data loss is a bug.
 - Do not force-push `master`. Do not use GitHub auto-close keywords (`fixes`, `closes`) unless the issue is actually resolved by this change.
 - Generated files (OpenAPI clients, WASM, coverage dumps) follow whatever the Makefile already does. Do not check in `lint-project.sh`, `bin/`, or `coverage.txt` unless the repo already tracks them.
 
+## Signing GitHub comments and PRs
+
+On `moov-io` GitHub, every agent-authored issue comment, pull request body, review comment, and discussion comment MUST end with a robot emoji and a short signature so humans can tell it came from an agent.
+
+Use a trailing line of the form:
+
+```
+🤖 <agent or tool name>
+```
+
+Examples: `🤖 grok` · `🤖 copilot` · `🤖 claude`
+
+- Sign the first post and every follow-up. Do not drop the signature on later replies.
+- Name the tool or model that produced the text. Do not sign as a human maintainer.
+- Do not add this signature to source code, testdata, or commit subjects.
+- Commits may include `Co-Authored-By` for the agent when the tool already does that. Do not invent a human author.
+
 ## Repo-specific files
 
 If you are working in a project other than `moov-io/.github`, look for a local `AGENTS.md` or `CLAUDE.md` first. This file is the org default, not a substitute for that repo’s build commands, package map, or spec notes.
 
-To adopt these defaults in another `moov-io` repository, add a root `AGENTS.md` that points here and then lists only local deltas:
-
-```markdown
-# AGENTS.md
-
-Follow https://raw.githubusercontent.com/moov-io/.github/master/AGENTS.md
-
-## Local
-- Check: make check
-- Spec: ./docs
-```
+Other `moov-io` repositories keep a short root `AGENTS.md` that points here and lists only local deltas. On conflict, that local file wins.

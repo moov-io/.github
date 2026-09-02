@@ -55,3 +55,11 @@ Small, production-used libraries and services that implement a single financial-
 - Default branch is usually `master`.
 - Small PRs. Do not force-push `master`.
 - Pin GitHub Actions by commit SHA. Prefer reusable workflows from `moov-io/.github` over copied job YAML.
+
+## Signing GitHub comments and PRs
+
+On `moov-io` GitHub, every agent-authored issue comment, pull request body, review comment, and discussion comment MUST end with a robot emoji and a short signature so humans can tell it came from an agent.
+
+Trailing line: `🤖 <agent or tool name>` (for example `🤖 grok`, `🤖 copilot`, `🤖 claude`).
+
+Sign the first post and every follow-up. Do not sign as a human maintainer. Do not add this signature to source code, testdata, or commit subjects.
