@@ -49,7 +49,7 @@ jobs:
 
       - name: Run zizmor
         continue-on-error: true
-        uses: zizmorcore/zizmor-action@bd12b495c90993a4301c73398142281a61499af3 # v0.9.0
+        uses: zizmorcore/zizmor-action@1b4550e929643b8b26a62303c6bd64814271a4f1 # v0.9.2
         with:
           # Findings go to code scanning and do not fail zizmor itself.
           # continue-on-error covers GitHub code-scanning upload 503s.
